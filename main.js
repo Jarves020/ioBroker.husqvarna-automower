@@ -1841,6 +1841,10 @@ class HusqvarnaAutomower extends utils.Adapter {
 					// every 1 day
 					await this.getAccessToken();
 					await this.autoRestart();
+				} else if (data === 1012) {
+     // Service restart sometimes
+     await this.getAccessToken();
+     await this.autoRestart();
 				} else {
 					throw new Error('Unknown WebSocket error. (ERR_#011)');
 				}
