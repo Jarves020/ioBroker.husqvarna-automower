@@ -1992,27 +1992,21 @@ class HusqvarnaAutomower extends utils.Adapter {
 						}
 					}
 
-					if ('positions' in message.attributes) {
-						if (Object.keys(message.attributes.positions).length > 0) {
-							this.setState(`${message.id}.positions.positions`, {
-								val: JSON.stringify(message.attributes.positions),
-								ack: true,
-							});
-							for (let i = 0; i < Object.keys(message.attributes.positions).length; i++) {
+					if ('position' in message.attributes) {
+						if (Object.keys(message.attributes.position).length > 0) {
 								this.setState(`${message.id}.positions.latitude`, {
-									val: message.attributes.positions[i].latitude,
+									val: message.attributes.position.latitude,
 									ack: true,
 								});
 								this.setState(`${message.id}.positions.longitude`, {
-									val: message.attributes.positions[i].longitude,
+									val: message.attributes.position.longitude,
 									ack: true,
 								});
 								this.setState(`${message.id}.positions.latlong`, {
-									val: `${message.attributes.positions[i].latitude};${message.attributes.positions[i].longitude}`,
+									val: `${message.attributes.position.latitude};${message.attributes.position.longitude}`,
 									ack: true,
 								});
 								await this.delay(500);
-							}
 							// this.log.debug(`[wss.on - message]: message.attributes.positions: ${JSON.stringify(message.attributes.positions)}`);
 						}
 					}
